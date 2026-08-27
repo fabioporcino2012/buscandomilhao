@@ -36,11 +36,12 @@ export function createMetaClient(options: MetaClientOptions) {
         limit: "100",
       }),
 
-    sendWhatsAppText: async (_input: {
+    sendWhatsAppText: async (input: {
       phoneId: string;
       to: string;
       text: string;
     }) => {
+      void input;
       if (!options.allowExternalWrites) {
         return { mode: "dry_run", channel: "whatsapp" } as const;
       }

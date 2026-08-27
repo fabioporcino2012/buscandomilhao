@@ -55,7 +55,8 @@ export function matchIdentity(
 
 export function canContact(
   customer: { doNotContact: boolean },
-  _channel: "instagram" | "whatsapp",
+  channel: "instagram" | "whatsapp",
 ) {
+  void channel;
   return !customer.doNotContact;
 }
