@@ -1,0 +1,22 @@
+{
+  "business_name": "Florida Ecosystem",
+  "journey_order": ["florida_pay", "florida_club", "florida_black"],
+  "florida_club": {
+    "annual_days": 10,
+    "annual_cashback_rate": 0.14,
+    "quotas": [
+      { "key": "economico", "value_usd": 2000, "cashback_usd": 280 },
+      { "key": "suv", "value_usd": 3000, "cashback_usd": 420 },
+      { "key": "suv_luxo", "value_usd": 5000, "cashback_usd": 700 },
+      { "key": "escalade", "value_usd": 9000, "cashback_usd": 1260 }
+    ]
+  },
+  "kommo": {
+    "pipeline_id": 13953440
+  },
+  "meta": {
+    "waba_id": "1079795591041649",
+    "phone_id": "1309297265596025",
+    "instagram_handle": "floridacluboficial"
+  }
+}
