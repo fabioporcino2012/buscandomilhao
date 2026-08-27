@@ -59,6 +59,8 @@ O cliente terá um único histórico. O sistema decidirá qual produto apresenta
 - A confirmação de segurança da conta da Crislany foi concluída em 27/08/2026. O portfólio empresarial abriu normalmente e confirmou que o `@floridacluboficial` ainda não está entre os ativos conectados. A janela oficial de login do Instagram ficou aberta para a entrada humana no perfil correto; nenhuma senha ou código foi registrado.
 - O Chrome será usado com perfil dedicado e modo de teste. Não será usado para esconder automação, contornar bloqueios ou interferir no Chrome pessoal.
 
+Atualização 27/08/2026 17:06 EDT: o Chrome está autenticado no `@floridacluboficial`. Entretanto, uma nova leitura Graph v25 das páginas acessíveis pela credencial principal e pela credencial da Crislany ainda retornou apenas `@floridarentalcar`, `@floridaplus` e `@floridarentalcarlatino`. Portanto, o login foi confirmado, mas a vinculação empresarial/API ainda não foi comprovada.
+
 ### 2.5 Florida Black
 
 - Plataforma: https://floridablack.lovable.app
