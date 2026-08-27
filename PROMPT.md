@@ -1,6 +1,39 @@
-# Prompt mestre — sistema comercial autônomo no Instagram
+<!--
+  PROMPT ÚNICO — copie TUDO abaixo da linha e cole no Codex.
+  Antes de colar, preencha o bloco CONFIGURAÇÃO. Só isso.
+-->
 
-> Antes de rodar: copie `config/business.example.json` para `config/business.json` e substitua todos os `{{PLACEHOLDERS}}`. O agente lê esse arquivo — nenhum dado real deve ser colado neste prompt.
+---
+
+# Construir um sistema comercial autônomo no Instagram
+
+## CONFIGURAÇÃO
+
+Estes são os únicos dados do negócio. Grave-os em `config/business.json` no início do trabalho e leia deles em todo o resto do sistema — nenhum valor real pode ficar espalhado pelo código.
+
+```
+OWNER_NAME              = {{SEU_NOME}}
+OWNER_ROLE              = {{SEU_CARGO}}
+COMPANY_NAME            = {{NOME_DA_EMPRESA}}
+COMPANY_WEBSITE         = {{SITE_DA_EMPRESA}}
+INSTAGRAM_HANDLE        = {{@SEU_INSTAGRAM}}
+
+WHATSAPP_LINK           = {{https://wa.me/55...}}
+AFFILIATE_GROUP_LINK    = {{link do grupo de afiliados}}
+
+ONE_LINE_PITCH          = {{o que a empresa resolve, em uma frase}}
+HOW_IT_WORKS            = {{passo 1}} | {{passo 2}} | {{passo 3}}
+REVENUE_MODEL           = {{como a empresa ganha dinheiro}}
+MARKET_JARGON           = {{termo do nicho}} = {{o que significa}}
+
+VERIFIED_CLAIMS         = {{afirmações JÁ comprovadas — só estas podem ser enviadas}}
+UNVERIFIED_CLAIMS       = {{afirmações a comprovar — BLOQUEADAS até virarem prova}}
+
+ICP_SEGMENTS            = {{segmento 1}} | {{segmento 2}} | {{segmento 3}}
+ICP_KEYWORDS            = {{palavra 1}} | {{palavra 2}} | {{palavra 3}}
+AFFILIATE_TOPICS        = {{tema 1}} | {{tema 2}}
+GEOGRAPHY               = {{região}}
+```
 
 ---
 
@@ -8,11 +41,9 @@
 
 Atue como tech lead, engenheiro de produto e especialista em agentes de IA e automação comercial.
 
-Construa um sistema local, completo e funcional, que automatize a prospecção da **{{COMPANY_NAME}}** no Instagram.
+Construa um sistema local, completo e funcional, que automatize a prospecção da `COMPANY_NAME` no Instagram.
 
-Não entregue plano, protótipo ou CRM estático. Implemente, teste e demonstre o fluxo rodando com evidência.
-
----
+Não entregue plano, protótipo ou CRM estático. Implemente, teste e mostre evidência do fluxo rodando.
 
 ## Objetivo
 
@@ -20,28 +51,13 @@ Um sistema que opere sozinho neste ciclo, sem "continue" e sem aprovação mensa
 
 **Observar → Decidir → Agir → Medir → Aprender → Adaptar**
 
-Autonomia total dentro dos limites configurados em `.env` e no painel. Fora deles, o sistema pausa e chama o operador.
+Autonomia total dentro dos limites do `.env` e do painel. Fora deles, pausa e chama o operador.
 
----
+## Regra de afirmações
 
-## Contexto comercial
+A IA só pode enviar o que está em `VERIFIED_CLAIMS`.
 
-Tudo vem de `config/business.json`:
-
-| Campo | Uso |
-|---|---|
-| `identity.owner_name` | Quem assina as mensagens |
-| `identity.company_name` / `company_website` | Empresa e fonte de verdade |
-| `identity.instagram_handle` | Conta que prospecta |
-| `handoff.whatsapp_link` | Destino do lojista interessado |
-| `handoff.affiliate_group_link` | Destino do influenciador interessado |
-| `offer.*` | Proposta de valor, funcionamento, modelo de receita, jargão do nicho |
-
-### Regra de afirmações
-
-A IA só pode enviar o que está em `verified_claims`.
-
-Tudo em `unverified_claims` fica bloqueado até ser comprovado no site ou em material oficial. Sem exceção, sem paráfrase.
+Tudo em `UNVERIFIED_CLAIMS` fica bloqueado até ser comprovado no site ou em material oficial. Sem exceção, sem paráfrase.
 
 A IA nunca inventa taxa, condição, garantia, relação societária ou superlativo. Nunca promete aprovação de conta nem resultado financeiro. Onboarding segue as regras de cadastro, KYC, KYB e PLD da empresa.
 
@@ -49,7 +65,7 @@ A IA nunca inventa taxa, condição, garantia, relação societária ou superlat
 
 ## Funil A — clientes
 
-**Público:** os segmentos e sinais definidos em `icp_customers`, mais os novos padrões que os dados de conversão revelarem.
+**Público:** os segmentos de `ICP_SEGMENTS`, partindo de `ICP_KEYWORDS`, mais os padrões novos que os dados de conversão revelarem.
 
 **Sinais públicos analisados:** nome, @, bio, categoria, publicações, hashtags, localização, perfis relacionados, seguidores e interações públicas.
 
@@ -63,18 +79,18 @@ A IA nunca inventa taxa, condição, garantia, relação societária ou superlat
 6. Enviar a primeira DM **pelo navegador**.
 7. Aguardar resposta.
 8. Migrar para a API oficial assim que a resposta chegar.
-9. Apresentar `owner_name` e a empresa no momento certo.
+9. Apresentar `OWNER_NAME` e a empresa no momento certo.
 10. Entender a necessidade, tratar objeção.
-11. Encaminhar ao WhatsApp.
+11. Encaminhar para `WHATSAPP_LINK`.
 12. Acompanhar cadastro e ativação quando o dado existir.
 
 Deve parecer conversa pessoal, não campanha. Nunca fingir ser cliente nem usar informação falsa para arrancar resposta.
 
 ## Funil B — afiliados
 
-**Público:** os temas de `icp_affiliates`, avaliados por relevância temática, idioma, geografia, qualidade de conteúdo, engajamento real e compatibilidade de audiência.
+**Público:** criadores dentro de `AFFILIATE_TOPICS`, em `GEOGRAPHY`, avaliados por relevância temática, idioma, qualidade de conteúdo, engajamento real e compatibilidade de audiência.
 
-**Fluxo:** descobrir → qualificar → abordar pelo navegador com contexto real do perfil → migrar para API na resposta → apresentar o programa → explicar link individual e remuneração (só o que está verificado) → encaminhar ao grupo → medir entrada, ativação, indicações e clientes gerados.
+**Fluxo:** descobrir → qualificar → abordar pelo navegador com contexto real do perfil → migrar para API na resposta → apresentar o programa → explicar link individual e remuneração (só o que está verificado) → encaminhar para `AFFILIATE_GROUP_LINK` → medir entrada, ativação, indicações e clientes gerados.
 
 Otimizar para afiliado que **gera cliente ativo**, não para entrada no grupo.
 
@@ -84,18 +100,31 @@ Otimizar para afiliado que **gera cliente ativo**, não para entrada no grupo.
 
 ### Etapa 1 — Navegador (primeiro contato)
 
-A API oficial não abre conversa fria. Então a primeira DM sai pelo Chrome real do operador, com sessão logada por ele uma única vez. Setup completo em [`docs/02-browser-session.md`](../docs/02-browser-session.md).
+A API oficial da Meta não abre conversa com quem nunca respondeu. Então a primeira DM sai pelo **Chrome real do operador**, com sessão logada por ele uma única vez, na mão.
 
 Requisitos:
 
-- Playwright conectado por CDP (`chromium.connectOverCDP`) ao Chrome já em execução.
-- Perfil dedicado (`CHROME_PROFILE_DIR`), separado do perfil pessoal.
-- Aba própria do agente. Nunca adotar aba do usuário, nunca chamar `bringToFront()`, nunca tomar mouse ou teclado.
+- Playwright conectado por CDP: `chromium.connectOverCDP(process.env.CHROME_CDP_URL)`.
+- Perfil dedicado do Chrome (`CHROME_PROFILE_DIR`), separado do perfil pessoal. O Chrome 136+ recusa `--remote-debugging-port` no perfil padrão, então isso é requisito e não preferência.
+- Reusar o contexto já logado: `browser.contexts()[0]`.
+- Aba própria do agente (`context.newPage()`). Nunca adotar aba do usuário, nunca chamar `bringToFront()`, nunca tomar mouse ou teclado.
+- Fechar a aba ao fim da job, inclusive em erro (`try/finally`).
 - Restrito ao domínio do Instagram.
 - Um mutex garante uma job de navegador por vez.
-- Ritmo humano por **saúde da conta**: `MAX_DMS_PER_DAY`, intervalo aleatório entre envios, janela de horário, aquecimento gradual.
-- Ao enviar: registrar mensagem, horário, variante e resultado no CRM; marcar `waiting_inbound_reply`.
-- Falhou? Salvar screenshot, snapshot de acessibilidade, URL, erros de console, falhas de rede, job id.
+- Se `connectOverCDP` falhar, **não** abrir Chrome novo por conta própria: registrar `browser_unavailable`, pausar a fila, avisar no painel.
+- Ao enviar: gravar mensagem, horário, variante e resultado no CRM; marcar `waiting_inbound_reply`.
+- Falhou? Salvar screenshot, snapshot de acessibilidade, URL, erros de console, falhas de rede e job id.
+
+**Ritmo humano — por saúde da conta, não para burlar detecção.** Mesma disciplina de um SDR de verdade:
+
+| Controle | Valor inicial | Variável |
+|---|---|---|
+| DMs por dia | 30 | `MAX_DMS_PER_DAY` |
+| Intervalo entre DMs | 90–240s aleatório | `MIN/MAX_SECONDS_BETWEEN_DMS` |
+| Janela de operação | 09:00–20:00 | `OPERATING_HOURS` |
+| Aquecimento | 5/dia na 1ª semana, +5 por semana | `warmup_schedule` |
+
+Digitação com delay por caractere e pausa antes de enviar.
 
 Preferir snapshot de acessibilidade e referências estáveis a seletor CSS frágil. Nada de comando de chat livre como camada de produção: o worker emite ações estruturadas e valida cada resultado.
 
@@ -123,23 +152,23 @@ API não autorizada, webhook fora do ar ou janela expirada → **não** tentar c
 
 ### Etapa 3 — WhatsApp
 
-Lojista interessado → `handoff.whatsapp_link`. Influenciador interessado → `handoff.affiliate_group_link`. Havendo WhatsApp Business, respeitar opt-in, templates e janelas.
+Lojista interessado → `WHATSAPP_LINK`. Influenciador interessado → `AFFILIATE_GROUP_LINK`. Havendo WhatsApp Business, respeitar opt-in, templates e janelas.
 
 ---
 
 ## Motor de conversação (OpenAI)
 
-Chave e modelos em [`docs/01-openai-setup.md`](01-openai-setup.md). `OPENAI_MODEL` para redação e decisão; `OPENAI_MODEL_FAST` para classificação e extração.
+SDK oficial da OpenAI. `OPENAI_MODEL` para redação e decisão, `OPENAI_MODEL_FAST` para classificação e extração. Nomes exatos vêm do `.env` — sem alias flutuante em produção, senão a qualidade das mensagens muda sozinha.
 
-Contexto de cada chamada: informações públicas do perfil, tipo e nicho do lead, histórico completo, etapa do funil, experimentos anteriores e `verified_claims`.
+Contexto de cada chamada: informações públicas do perfil, tipo e nicho do lead, histórico completo, etapa do funil, experimentos anteriores e `VERIFIED_CLAIMS`.
 
 **Intenções:** `interested`, `asked_info`, `asked_pricing`, `wants_whatsapp`, `not_the_owner`, `will_forward`, `objection`, `not_interested`, `opt_out`, `ambiguous`, `needs_human`.
 
 **Ações:** responder, perguntar, apresentar, tratar objeção, encaminhar ao WhatsApp, aguardar, agendar follow-up, encerrar, escalar para humano.
 
-Pedido de parar é atendido na hora e o perfil entra em `do_not_contact` — permanente, sem follow-up, sem reentrada por outra campanha.
+Pedido de parar é atendido na hora. O perfil entra em `do_not_contact` — permanente, sem follow-up, sem reentrada por outra campanha, por nenhum canal.
 
-Toda chamada grava tokens e custo em `ai_calls`. Ao bater `OPENAI_MONTHLY_BUDGET_USD`, o sistema pausa.
+Toda chamada grava `model`, tokens e custo estimado na tabela `ai_calls`. Antes de cada chamada o worker consulta `OPENAI_MONTHLY_BUDGET_USD` e **pausa o sistema** ao atingir o teto. O painel mostra custo por lead e custo por cliente ativo — sem isso não dá para saber se a automação dá lucro.
 
 ---
 
@@ -147,9 +176,9 @@ Toda chamada grava tokens e custo em `ai_calls`. Ao bater `OPENAI_MONTHLY_BUDGET
 
 Cada ação gera um evento estruturado. Medir conversão por nicho, palavra-chave, origem, loja vs. dono, características do perfil, horário, mensagem inicial, apresentação, proposta de valor, CTA, cadência de follow-up e modelo usado.
 
-**Prioridade de resultado — clientes:** cliente ativo → volume transacionado → cadastro → encaminhamento qualificado → interesse → resposta.
+**Prioridade — clientes:** cliente ativo → volume transacionado → cadastro → encaminhamento qualificado → interesse → resposta.
 
-**Afiliados:** clientes ativos indicados → volume gerado → afiliado ativo → entrada no grupo → interesse → resposta.
+**Prioridade — afiliados:** clientes ativos indicados → volume gerado → afiliado ativo → entrada no grupo → interesse → resposta.
 
 Experimentos: uma variável por vez, distribuição controlada, grupo de controle, tamanho de amostra registrado, sem declarar vencedor cedo, aumento gradual da variante campeã e uma fatia sempre explorando hipótese nova. Toda estratégia comparável e reversível.
 
@@ -159,7 +188,7 @@ A IA pode alterar sozinha prompts, critérios, pontuações e horários dentro d
 
 ## CRM e painel
 
-Dashboard geral · Kanban separado por funil · cadastro e timeline do lead · origem, nicho, tags e score · estado do funil e do canal · próxima ação · follow-ups vencidos · fila de jobs · experimentos e comparação de variantes · métricas de conversão · log de decisões da IA · fila de exceções · alertas de integração · configuração dos limites · botão de pausa geral · atalhos para Instagram, WhatsApp e grupo.
+Dashboard geral · Kanban separado por funil · cadastro e timeline do lead · origem, nicho, tags e score · estado do funil e do canal · próxima ação · follow-ups vencidos · fila de jobs · experimentos e comparação de variantes · métricas de conversão · custo de IA · log de decisões da IA · fila de exceções · alertas de integração · configuração dos limites · botão de pausa geral · atalhos para Instagram, WhatsApp e grupo.
 
 A prospecção fica separada das conversas pessoais do Instagram.
 
@@ -198,6 +227,7 @@ Doc de dev em inglês. Manual do operador em português.
 Modular monolith. Sem microservices, sem packages separados, sem interface com implementação única, sem abstração especulativa.
 
 ```
+config/business.json         identidade, oferta, ICP, claims (gitignored)
 src/app                      painel Next.js
 src/features/leads
 src/features/conversations
@@ -237,22 +267,38 @@ Validação de env · segredo fora do Git · estado do navegador criptografado �
 
 Pausa automática diante de: alerta ou restrição do Instagram, perda de sessão, crescimento anormal de erro, mensagem duplicada, aumento de bloqueio ou opt-out, divergência entre navegador/API/CRM, comportamento inesperado da IA, estouro de orçamento da OpenAI.
 
+`.gitignore` obrigatório para: `.env`, `config/business.json`, `.chrome-profile/`, `*.db`, `data/`, `backups/`, `screenshots/`, `traces/`.
+
 ---
 
 ## Testes
 
 Cobrir: dedupe de lead · transição de pipeline · transição de canal · primeiro contato pelo navegador · handoff navegador → webhook → API · trava de envio duplicado · idempotência de webhook · follow-up · atribuição de experimento · recuperação após reinício · expiração da janela da API · lista de não contato · circuit breaker · corte por orçamento.
 
-Navegador em três níveis: (1) local com páginas e APIs simuladas; (2) dry-run real com o envio final bloqueado; (3) smoke test real e limitado, **só após autorização explícita**.
+Navegador em três níveis: (1) local com páginas e APIs simuladas; (2) dry-run real com o envio final bloqueado; (3) smoke test real e limitado, **só após autorização explícita do operador**.
 
 Antes de concluir: lint, type check, testes, production build e um fluxo end-to-end.
+
+---
+
+## Entregáveis extras
+
+Além do sistema, gerar:
+
+- **`.env.example`** com: `OPENAI_API_KEY`, `OPENAI_MODEL`, `OPENAI_MODEL_FAST`, `OPENAI_MONTHLY_BUDGET_USD`, `CHROME_CDP_URL`, `CHROME_PROFILE_DIR`, `INSTAGRAM_APP_SECRET`, `INSTAGRAM_PAGE_ACCESS_TOKEN`, `INSTAGRAM_WEBHOOK_VERIFY_TOKEN`, `INSTAGRAM_BUSINESS_ACCOUNT_ID`, `DATABASE_URL`, `MAX_DMS_PER_DAY`, `MIN_SECONDS_BETWEEN_DMS`, `MAX_SECONDS_BETWEEN_DMS`, `OPERATING_HOURS`, `OPERATING_TIMEZONE`.
+- **`config/business.example.json`** espelhando o bloco CONFIGURAÇÃO com `{{PLACEHOLDERS}}`.
+- **`SETUP.md`** em português, com o passo a passo do operador:
+  - Criar a chave em `https://platform.openai.com/api-keys`, num projeto separado, com permissão `Restricted`, e definir hard limit mensal em Settings → Limits.
+  - Subir o Chrome com perfil dedicado e debug em `127.0.0.1` — comandos para macOS, Linux e Windows — e logar no Instagram uma única vez.
+  - Aviso: a porta de debug dá controle total sobre a sessão logada. Manter em `127.0.0.1`, nunca `0.0.0.0`, nunca em máquina compartilhada.
+  - Como rodar, como pausar, como restaurar backup, o que fazer se a chave vazar.
 
 ---
 
 ## Ordem de execução
 
 1. Inspecionar o projeto e reaproveitar o que existir.
-2. Ler `config/business.json` e o site da empresa.
+2. Gravar o bloco CONFIGURAÇÃO em `config/business.json` e ler o site da empresa.
 3. Validar as limitações atuais nas fontes oficiais da Meta.
 4. Definir a arquitetura mínima.
 5. Banco, migrações e estados.
@@ -266,7 +312,10 @@ Antes de concluir: lint, type check, testes, production build e um fluxo end-to-
 13. Motor de conversação com OpenAI.
 14. Experimentos e otimização.
 15. Segurança, observabilidade e recuperação.
-16. Simulação → dry-run → autorização → piloto limitado → autonomia.
+16. `.env.example`, `config/business.example.json` e `SETUP.md`.
+17. Simulação → dry-run → autorização do operador → piloto limitado → autonomia.
+
+**Se você estiver rodando em ambiente isolado (container, sandbox, cloud):** o Chrome real do operador não existe aí. Implemente a camada de navegador completa, teste contra páginas simuladas e um cliente CDP fake, e deixe o dry-run e o smoke test real documentados para o operador rodar na máquina dele. Não trave o projeto por causa disso.
 
 Faltou credencial? Continue tudo que não depende dela e reporte só o bloqueio exato quando chegar nele. Não pare o projeto porque um site caiu.
 
@@ -279,20 +328,21 @@ Concluído só quando demonstrar, com evidência:
 1. Sobe local com um comando.
 2. Frontend 100% PT-BR.
 3. Código, banco, status e doc técnica em inglês.
-4. Descoberta e cadastro sem duplicidade.
-5. Primeira DM enviada pelo Chrome real sem interferir no uso do computador.
-6. Resposta recebida pelo webhook.
-7. Conversa continua pela API oficial.
-8. Zero envio duplicado entre navegador e API.
-9. Resposta interpretada e próxima ação decidida sozinha.
-10. Os dois funis funcionando.
-11. Encaminhamento correto ao WhatsApp.
-12. Teste A/B registrado e medido.
-13. Estratégia ajustada pelos resultados.
-14. Recuperação correta após reinício.
-15. Pausa automática em situação de risco.
-16. Custo de IA por lead e por cliente visível no painel.
-17. Histórico completo e auditável no CRM.
-18. Lint, type check, testes e build aprovados.
+4. Nenhum dado real fora de `config/business.json` e `.env`.
+5. Descoberta e cadastro sem duplicidade.
+6. Primeira DM enviada pelo Chrome real sem interferir no uso do computador.
+7. Resposta recebida pelo webhook.
+8. Conversa continua pela API oficial.
+9. Zero envio duplicado entre navegador e API.
+10. Resposta interpretada e próxima ação decidida sozinha.
+11. Os dois funis funcionando.
+12. Encaminhamento correto ao WhatsApp.
+13. Teste A/B registrado e medido.
+14. Estratégia ajustada pelos resultados.
+15. Recuperação correta após reinício.
+16. Pausa automática em situação de risco.
+17. Custo de IA por lead e por cliente visível no painel.
+18. Histórico completo e auditável no CRM.
+19. Lint, type check, testes e build aprovados.
 
 Código escrito não é sucesso. Mostre cada fluxo crítico funcionando.

@@ -2,7 +2,7 @@
 
 # 🚀 Buscando 1 Milhão
 
-### Construindo um sistema comercial autônomo, em público, até bater **R$ 1.000.000** em faturamento.
+### Um prompt. Um sistema comercial autônomo. Construído em público.
 
 <br/>
 
@@ -22,7 +22,13 @@
 
 <br/>
 
-**[O que é](#-o-que-é) · [Como funciona](#-como-funciona) · [Começando](#-começando) · [Estrutura](#-estrutura) · [Roadmap](#-roadmap)**
+## ⬇️ [**PROMPT.md**](PROMPT.md) ⬇️
+
+**É esse arquivo. Preenche, cola no Codex, pronto.**
+
+<br/>
+
+**[O que é](#-o-que-é) · [Como funciona](#-como-funciona) · [Como usar](#-como-usar) · [Setup](#-setup-da-sua-máquina) · [Regras](#-regras-que-não-se-negocia)**
 
 </div>
 
@@ -34,11 +40,11 @@ Um agente de IA que prospecta pelo Instagram sozinho: acha o lead, qualifica, es
 
 Roda 100% local. Seu banco, sua sessão, sua chave.
 
-O repositório é o diário de bordo: cada commit é um passo até o milhão, e você pode clonar, trocar os `{{PLACEHOLDERS}}` e rodar no seu próprio negócio.
-
 ```
 Observar → Decidir → Agir → Medir → Aprender → Adaptar
 ```
+
+Aqui **não tem código pronto**. Tem o prompt que constrói o código. Você troca os `{{PLACEHOLDERS}}` pelo seu negócio, cola no Codex, e sai um sistema seu — não uma cópia do meu.
 
 <br/>
 
@@ -75,72 +81,98 @@ Uma **trava de canal** garante que os dois nunca escrevam no mesmo fio. Depois d
 
 <br/>
 
-## 🚦 Começando
+## 🚦 Como usar
+
+### `1` Preenche o bloco de configuração
+
+Abre o [**PROMPT.md**](PROMPT.md). No topo tem um bloco `CONFIGURAÇÃO` com uns 15 campos. Troca cada `{{PLACEHOLDER}}` pelo seu: nome, empresa, site, @ do Instagram, WhatsApp, oferta e quem é seu cliente ideal.
+
+Dois campos merecem atenção:
+
+- **`VERIFIED_CLAIMS`** — só o que você consegue provar hoje. É a única coisa que a IA pode afirmar pro lead.
+- **`UNVERIFIED_CLAIMS`** — o que você *quer* dizer mas ainda não comprovou. Fica bloqueado até virar prova.
+
+### `2` Cola no Codex
+
+Copia o arquivo inteiro, do começo ao fim, e cola numa task do Codex.
+
+> 💡 Codex cloud roda em container — ele **escreve** toda a camada de navegador e testa contra páginas simuladas, mas não alcança o seu Chrome. O prompt já diz isso pra ele, então ele entrega tudo e deixa o teste real documentado pra você rodar local.
+
+### `3` Roda na sua máquina
+
+Clona o que ele gerou, faz o [setup abaixo](#-setup-da-sua-máquina), e sobe:
 
 ```bash
-git clone https://github.com/{{SEU_USUARIO}}/buscandomilhao.git
-cd buscandomilhao
-pnpm install
-```
-
-**1. Seus dados**
-
-```bash
-cp config/business.example.json config/business.json
-```
-
-Troque todos os `{{PLACEHOLDERS}}`: nome, empresa, site, @ do Instagram, WhatsApp, oferta e ICP. Esse arquivo é a única fonte de identidade — nada de dado real espalhado pelo código.
-
-**2. Sua chave da OpenAI**
-
-```bash
-cp .env.example .env
-```
-
-Passo a passo em **[docs/01-openai-setup.md](docs/01-openai-setup.md)** — incluindo teto de gasto, que é o que te salva de um loop caro.
-
-**3. Sua sessão do Instagram**
-
-```bash
-/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
-  --remote-debugging-port=9222 \
-  --user-data-dir="$PWD/.chrome-profile"
-```
-
-Logue uma vez nessa janela. Perfil dedicado, separado do seu pessoal — o agente nunca vê suas abas. Detalhes e comandos de Linux/Windows em **[docs/02-browser-session.md](docs/02-browser-session.md)**.
-
-**4. Subir**
-
-```bash
-pnpm dev     # painel + worker
+pnpm install && pnpm dev
 ```
 
 <br/>
 
-## 📁 Estrutura
+## 🔧 Setup da sua máquina
 
+<details>
+<summary><b>🔑 Chave da OpenAI</b></summary>
+
+<br/>
+
+1. **https://platform.openai.com/api-keys** → login.
+2. **Settings → Billing**: adiciona crédito. Sem crédito, dá `429 insufficient_quota`.
+3. **Settings → Limits**: define um **hard limit** mensal (ex. `USD 50`). Esse é o freio real se o agente entrar em loop.
+4. **Create new secret key** → projeto **separado** (não usa o `Default`) → permissão `Restricted`, só `Model capabilities: Write`.
+5. Copia a chave **agora**, ela só aparece uma vez.
+
+```bash
+cp .env.example .env
+# cola em OPENAI_API_KEY=sk-proj-...
 ```
-buscandomilhao/
-├── 📄 README.md
-├── 🔐 .env.example              chaves e limites de autonomia
-│
-├── 📁 config/
-│   └── business.example.json    identidade, oferta, ICP, claims
-│
-├── 📁 prompts/
-│   └── master-prompt.md         ⭐ o prompt que constrói o sistema
-│
-├── 📁 docs/
-│   ├── 01-openai-setup.md       chave, modelos, controle de custo
-│   └── 02-browser-session.md    Chrome real via CDP + ritmo humano
-│
-└── 📁 src/                      (em construção)
-    ├── app/                     painel Next.js — PT-BR
-    ├── features/                leads · conversations · campaigns · experiments · affiliates
-    ├── integrations/            instagram · browser · openai · whatsapp
-    ├── db/                      SQLite + Drizzle
-    └── worker/                  jobs duráveis
+
+O `.env` já está no `.gitignore`. Nunca commita, nunca aparece em print ou vídeo.
+
+**Vazou?** Revoga em `platform.openai.com/api-keys` e gera outra. Revogar resolve — reescrever o histórico do Git é secundário.
+
+</details>
+
+<details>
+<summary><b>🌐 Sessão do Instagram no seu Chrome</b></summary>
+
+<br/>
+
+Perfil **dedicado**, separado do seu pessoal. Isso resolve três coisas de uma vez: o agente nunca vê suas abas, seu Chrome normal continua livre, e o Chrome 136+ recusa debug no perfil padrão de qualquer jeito.
+
+**macOS**
+
+```bash
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
+  --remote-debugging-port=9222 \
+  --remote-debugging-address=127.0.0.1 \
+  --user-data-dir="$PWD/.chrome-profile"
 ```
+
+**Linux**
+
+```bash
+google-chrome --remote-debugging-port=9222 --user-data-dir="$PWD/.chrome-profile"
+```
+
+**Windows (PowerShell)**
+
+```powershell
+& "C:\Program Files\Google\Chrome\Application\chrome.exe" `
+  --remote-debugging-port=9222 `
+  --user-data-dir="$PWD\.chrome-profile"
+```
+
+Nessa janela que abriu, entra no `instagram.com`, loga normal, resolve o 2FA. A sessão fica salva e sobrevive a reinício.
+
+Testa:
+
+```bash
+curl -s http://127.0.0.1:9222/json/version
+```
+
+> ⚠️ **Segurança:** essa porta dá controle total sobre a sessão logada nesse perfil. Mantém em `127.0.0.1`, nunca `0.0.0.0`, e não roda em máquina compartilhada. O `.chrome-profile/` guarda seus cookies do Instagram — já está no `.gitignore` e não sai da sua máquina.
+
+</details>
 
 <br/>
 
@@ -167,7 +199,7 @@ Ritmo humano existe por **saúde da conta** — mesma disciplina de um SDR de ve
 
 <br/>
 
-A IA só pode afirmar o que está em `verified_claims`. Qualquer coisa em `unverified_claims` fica bloqueada até virar prova.
+A IA só pode afirmar o que está em `VERIFIED_CLAIMS`. Qualquer coisa em `UNVERIFIED_CLAIMS` fica bloqueada até virar prova.
 
 Ela nunca inventa taxa, condição, garantia ou superlativo, nunca promete aprovação de conta, e nunca finge ser cliente pra arrancar resposta.
 
@@ -195,47 +227,13 @@ O painel mostra **custo por lead** e **custo por cliente ativo** — sem isso n�
 
 <br/>
 
-## 🗺️ Roadmap
-
-| | Fase | Status |
-|:--|:--|:--|
-| `01` | Prompt mestre e arquitetura | ✅ |
-| `02` | Banco, migrações e estados | ⬜ |
-| `03` | CRM em PT-BR | ⬜ |
-| `04` | Worker e jobs duráveis | ⬜ |
-| `05` | Descoberta + 1ª DM pelo navegador | ⬜ |
-| `06` | Webhook Meta + handoff de canal | ⬜ |
-| `07` | Motor de conversação (OpenAI) | ⬜ |
-| `08` | Experimentos e otimização | ⬜ |
-| `09` | Dry-run e piloto limitado | ⬜ |
-| `10` | Autonomia ligada 🚀 | ⬜ |
-
-<br/>
-
-## 📈 Placar
-
-```
-R$ 0 ▏░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ R$ 1.000.000
-```
-
-| Métrica | Valor |
-|:--|--:|
-| Leads descobertos | `0` |
-| DMs enviadas | `0` |
-| Taxa de resposta | `—` |
-| Encaminhados ao WhatsApp | `0` |
-| Clientes ativos | `0` |
-| **Faturamento** | **`R$ 0`** |
-
-<br/>
-
 ---
 
 <div align="center">
 
 **Este repositório é público de propósito.**
 
-Clone, troque os `{{PLACEHOLDERS}}`, e construa o seu.
+Pega o [PROMPT.md](PROMPT.md), troca os `{{PLACEHOLDERS}}`, e constrói o seu.
 
 <br/>
 
