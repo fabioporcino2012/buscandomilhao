@@ -24,6 +24,7 @@ browser-state/
 dist/
 out/
 *.tsbuildinfo
+.worktrees/
 
 # runtime artifacts
 logs/
