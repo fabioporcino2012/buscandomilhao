@@ -1,242 +1,44 @@
-<div align="center">
+# Florida Ecosystem — Sistema Comercial Autônomo
 
-# 🚀 Buscando 1 Milhão
+Uma esteira única: Florida Pay → Florida Club → Florida Black.
 
-### Um prompt. Um sistema comercial autônomo. Construído em público.
+Estado: desenho aprovado; execução em auditoria e dry-run; nenhum envio externo ativado.
 
-<br/>
+## Resultado de negócio
 
-![Status](https://img.shields.io/badge/status-em%20construção-FFB000?style=for-the-badge&labelColor=0D1117)
-![Meta](https://img.shields.io/badge/meta-R$%201.000.000-00C853?style=for-the-badge&labelColor=0D1117)
-![Build in Public](https://img.shields.io/badge/build-in%20public-E1306C?style=for-the-badge&logo=instagram&logoColor=white&labelColor=0D1117)
+1. Florida Pay entra como produto de menor barreira para abrir o relacionamento.
+2. Florida Club recebe os clientes qualificados para cotas de veículos.
+3. Florida Black mantém relacionamento, conteúdo e benefícios no pós-venda.
+4. Kommo conserva um histórico único do cliente durante toda a jornada.
+5. WhatsApp `+1 407-462-3309` e Instagram `@floridacluboficial` operam com controles contra mensagens duplicadas.
 
-<br/>
+## Regra comercial central
 
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![Tailwind](https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
-![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white)
-![Drizzle](https://img.shields.io/badge/Drizzle-C5F74F?style=flat-square&logo=drizzle&logoColor=black)
-![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white)
-![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=flat-square&logo=playwright&logoColor=white)
+O cotista do Florida Club escolhe entre 10 diárias anuais ou cashback anual equivalente a 14% do valor da cota quando não utilizar as diárias, conforme o contrato vigente.
 
-<br/>
+Não é permitido comunicar esse benefício como rendimento, retorno garantido ou devolução de 100% do valor.
 
-## ⬇️ [**PROMPT.md**](PROMPT.md) ⬇️
+## Estado atual
 
-**É esse arquivo. Preenche, cola no Codex, pronto.**
+- Prompt mestre aprovado: [PROMPT.md](PROMPT.md)
+- Diagnóstico verificado: [docs/audit/2026-08-27-current-state.md](docs/audit/2026-08-27-current-state.md)
+- Plano de implantação: [docs/superpowers/plans/2026-08-27-florida-ecosystem-autonomous-sales.md](docs/superpowers/plans/2026-08-27-florida-ecosystem-autonomous-sales.md)
+- Prompt original preservado: [docs/reference/PROMPT-ORIGINAL.md](docs/reference/PROMPT-ORIGINAL.md)
 
-<br/>
+## Segurança operacional
 
-**[O que é](#-o-que-é) · [Como funciona](#-como-funciona) · [Como usar](#-como-usar) · [Setup](#-setup-da-sua-máquina) · [Regras](#-regras-que-não-se-negocia)**
+- Começa em modo de simulação, sem mensagem externa.
+- Qualquer texto comercial passa por validação das alegações aprovadas.
+- Kommo só é alterado pela integração oficial e nunca pelo seu espelho de leitura.
+- Pedidos de saída bloqueiam todos os produtos e canais.
+- Uma única tela permitirá pausar toda a comunicação externa.
+- O piloto real começa com uma única pessoa, uma única mensagem e confirmação do resultado.
 
-</div>
+## Próxima validação
 
----
-
-## 🎯 O que é
-
-Um agente de IA que prospecta pelo Instagram sozinho: acha o lead, qualifica, escreve a primeira mensagem, entende a resposta, conduz a conversa, encaminha pro WhatsApp e **aprende com o que converteu** — ajustando público, texto, horário e cadência sem ninguém mandar.
-
-Roda 100% local. Seu banco, sua sessão, sua chave.
-
-```
-Observar → Decidir → Agir → Medir → Aprender → Adaptar
-```
-
-Aqui **não tem código pronto**. Tem o prompt que constrói o código. Você troca os `{{PLACEHOLDERS}}` pelo seu negócio, cola no Codex, e sai um sistema seu — não uma cópia do meu.
-
-<br/>
-
-## ⚙️ Como funciona
-
-```mermaid
-flowchart LR
-    A["🔎 Descoberta<br/>perfis do ICP"] --> B["🧠 Qualificação<br/>score + prioridade"]
-    B --> C["💬 1ª DM<br/>seu Chrome real"]
-    C --> D{"Respondeu?"}
-    D -- não --> E["⏰ Follow-up<br/>agendado"]
-    E --> D
-    D -- sim --> F["📡 Webhook Meta<br/>handoff de canal"]
-    F --> G["🤖 Conversa<br/>API oficial + OpenAI"]
-    G --> H["📱 WhatsApp<br/>ou grupo de afiliados"]
-    H --> I["📊 Métricas<br/>o que converteu?"]
-    I -.retroalimenta.-> A
-
-    style A fill:#1f2937,stroke:#E1306C,color:#fff
-    style C fill:#1f2937,stroke:#FFB000,color:#fff
-    style G fill:#1f2937,stroke:#412991,color:#fff
-    style H fill:#1f2937,stroke:#25D366,color:#fff
-    style I fill:#1f2937,stroke:#00C853,color:#fff
-```
-
-### Por que dois canais
-
-| Etapa | Canal | Motivo |
-|:--|:--|:--|
-| **Primeiro contato** | Seu Chrome, sua sessão | A API oficial da Meta **não abre** conversa com quem nunca te respondeu |
-| **Depois da resposta** | API oficial + webhook | É o caminho suportado, auditável e estável |
-
-Uma **trava de canal** garante que os dois nunca escrevam no mesmo fio. Depois do handoff, o navegador está proibido de responder.
-
-<br/>
-
-## 🚦 Como usar
-
-### `1` Preenche o bloco de configuração
-
-Abre o [**PROMPT.md**](PROMPT.md). No topo tem um bloco `CONFIGURAÇÃO` com uns 15 campos. Troca cada `{{PLACEHOLDER}}` pelo seu: nome, empresa, site, @ do Instagram, WhatsApp, oferta e quem é seu cliente ideal.
-
-Dois campos merecem atenção:
-
-- **`VERIFIED_CLAIMS`** — só o que você consegue provar hoje. É a única coisa que a IA pode afirmar pro lead.
-- **`UNVERIFIED_CLAIMS`** — o que você *quer* dizer mas ainda não comprovou. Fica bloqueado até virar prova.
-
-### `2` Cola no Codex
-
-Copia o arquivo inteiro, do começo ao fim, e cola numa task do Codex.
-
-> 💡 Codex cloud roda em container — ele **escreve** toda a camada de navegador e testa contra páginas simuladas, mas não alcança o seu Chrome. O prompt já diz isso pra ele, então ele entrega tudo e deixa o teste real documentado pra você rodar local.
-
-### `3` Roda na sua máquina
-
-Clona o que ele gerou, faz o [setup abaixo](#-setup-da-sua-máquina), e sobe:
-
-```bash
-pnpm install && pnpm dev
-```
-
-<br/>
-
-## 🔧 Setup da sua máquina
-
-<details>
-<summary><b>🔑 Chave da OpenAI</b></summary>
-
-<br/>
-
-1. **https://platform.openai.com/api-keys** → login.
-2. **Settings → Billing**: adiciona crédito. Sem crédito, dá `429 insufficient_quota`.
-3. **Settings → Limits**: define um **hard limit** mensal (ex. `USD 50`). Esse é o freio real se o agente entrar em loop.
-4. **Create new secret key** → projeto **separado** (não usa o `Default`) → permissão `Restricted`, só `Model capabilities: Write`.
-5. Copia a chave **agora**, ela só aparece uma vez.
-
-```bash
-cp .env.example .env
-# cola em OPENAI_API_KEY=sk-proj-...
-```
-
-O `.env` já está no `.gitignore`. Nunca commita, nunca aparece em print ou vídeo.
-
-**Vazou?** Revoga em `platform.openai.com/api-keys` e gera outra. Revogar resolve — reescrever o histórico do Git é secundário.
-
-</details>
-
-<details>
-<summary><b>🌐 Sessão do Instagram no seu Chrome</b></summary>
-
-<br/>
-
-Perfil **dedicado**, separado do seu pessoal. Isso resolve três coisas de uma vez: o agente nunca vê suas abas, seu Chrome normal continua livre, e o Chrome 136+ recusa debug no perfil padrão de qualquer jeito.
-
-**macOS**
-
-```bash
-/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
-  --remote-debugging-port=9222 \
-  --remote-debugging-address=127.0.0.1 \
-  --user-data-dir="$PWD/.chrome-profile"
-```
-
-**Linux**
-
-```bash
-google-chrome --remote-debugging-port=9222 --user-data-dir="$PWD/.chrome-profile"
-```
-
-**Windows (PowerShell)**
-
-```powershell
-& "C:\Program Files\Google\Chrome\Application\chrome.exe" `
-  --remote-debugging-port=9222 `
-  --user-data-dir="$PWD\.chrome-profile"
-```
-
-Nessa janela que abriu, entra no `instagram.com`, loga normal, resolve o 2FA. A sessão fica salva e sobrevive a reinício.
-
-Testa:
-
-```bash
-curl -s http://127.0.0.1:9222/json/version
-```
-
-> ⚠️ **Segurança:** essa porta dá controle total sobre a sessão logada nesse perfil. Mantém em `127.0.0.1`, nunca `0.0.0.0`, e não roda em máquina compartilhada. O `.chrome-profile/` guarda seus cookies do Instagram — já está no `.gitignore` e não sai da sua máquina.
-
-</details>
-
-<br/>
-
-## 🛡️ Regras que não se negocia
-
-<details>
-<summary><b>Como o agente não queima a conta</b></summary>
-
-<br/>
-
-| Controle | Padrão |
-|:--|:--|
-| DMs por dia | 30, com aquecimento gradual |
-| Intervalo entre DMs | 90–240s aleatório |
-| Janela de operação | 09:00–20:00, fuso configurável |
-| Circuit breaker | Pausa tudo em erro anormal, restrição ou opt-out em alta |
-
-Ritmo humano existe por **saúde da conta** — mesma disciplina de um SDR de verdade. Não tem fingerprint forjado, API privada nem tentativa de burlar bloqueio.
-
-</details>
-
-<details>
-<summary><b>Como o agente não mente</b></summary>
-
-<br/>
-
-A IA só pode afirmar o que está em `VERIFIED_CLAIMS`. Qualquer coisa em `UNVERIFIED_CLAIMS` fica bloqueada até virar prova.
-
-Ela nunca inventa taxa, condição, garantia ou superlativo, nunca promete aprovação de conta, e nunca finge ser cliente pra arrancar resposta.
-
-</details>
-
-<details>
-<summary><b>Como o agente respeita quem não quer</b></summary>
-
-<br/>
-
-Pedido de parar é atendido na hora. O perfil entra em `do_not_contact` — permanente, sem follow-up, sem reentrada por outra campanha, por nenhum canal.
-
-</details>
-
-<details>
-<summary><b>Como o custo não explode</b></summary>
-
-<br/>
-
-Toda chamada à OpenAI grava tokens e custo. Ao bater `OPENAI_MONTHLY_BUDGET_USD`, o sistema pausa sozinho.
-
-O painel mostra **custo por lead** e **custo por cliente ativo** — sem isso não dá pra saber se a automação dá lucro.
-
-</details>
-
-<br/>
-
----
-
-<div align="center">
-
-**Este repositório é público de propósito.**
-
-Pega o [PROMPT.md](PROMPT.md), troca os `{{PLACEHOLDERS}}`, e constrói o seu.
-
-<br/>
-
-⭐ Se isso te ajudou, deixa uma estrela e acompanha a jornada.
-
-</div>
+1. Conectar `@floridacluboficial` ao portfólio Meta correto.
+2. Isolar o WhatsApp 3309 da automação pessoal antiga.
+3. Confirmar o sistema oficial do Florida Pay.
+4. Confirmar o catálogo ativo do Florida Black.
+5. Executar o teste completo em modo de simulação.
+6. Apresentar a mensagem exata do piloto para aprovação.
