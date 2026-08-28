@@ -1,0 +1,78 @@
+{
+  "capturedAt": "2026-08-27T21:21:00Z",
+  "instance": "n8n-hostinger-primary",
+  "apiStatus": 200,
+  "totalWorkflowsObserved": 81,
+  "secretsIncluded": false,
+  "workflows": [
+    {
+      "id": "jLhdENfBjwndRgjL",
+      "name": "FRC | Florida Club — Lead Capture (LP)",
+      "active": true,
+      "updatedAt": "2026-08-07T15:35:21.447Z",
+      "trigger": {
+        "type": "webhook",
+        "path": "florida-club-lead"
+      },
+      "nodeCount": 2,
+      "nodes": [
+        { "id": "webhook1", "name": "Webhook", "type": "webhook" },
+        { "id": "code1", "name": "Processa Lead", "type": "code" }
+      ],
+      "writes": ["public.florida_club_leads", "Kommo /api/v4/leads/complex via kommo-proxy-v2"],
+      "lastExecutionsReturned": 0,
+      "hardcodedCredentialEvidence": true
+    },
+    {
+      "id": "zxVZDGGRexEhxKEh",
+      "name": "FRC | Florida Club — Sync Funil + Watchdog",
+      "active": true,
+      "updatedAt": "2026-07-10T13:11:59.619Z",
+      "trigger": {
+        "type": "interval",
+        "minutes": 30
+      },
+      "nodeCount": 2,
+      "nodes": [
+        { "id": "sched1", "name": "A cada 30min", "type": "scheduleTrigger" },
+        { "id": "sync1", "name": "Sync + Watchdog", "type": "code" }
+      ],
+      "reads": ["Kommo /api/v4/leads via kommo-proxy-v2"],
+      "writes": ["public.florida_club_funil_snapshot"],
+      "lastExecutions": [
+        { "id": "11406998", "status": "success", "startedAt": "2026-08-27T21:00:37.005Z", "stoppedAt": "2026-08-27T21:01:16.237Z" },
+        { "id": "11401116", "status": "success", "startedAt": "2026-08-27T20:30:37.005Z", "stoppedAt": "2026-08-27T20:31:09.525Z" },
+        { "id": "11399573", "status": "success", "startedAt": "2026-08-27T20:00:37.005Z", "stoppedAt": "2026-08-27T20:01:19.914Z" },
+        { "id": "11398363", "status": "success", "startedAt": "2026-08-27T19:30:37.006Z", "stoppedAt": "2026-08-27T19:31:16.915Z" }
+      ],
+      "hardcodedCredentialEvidence": true
+    },
+    {
+      "id": "2PZQ3v9UWZsEkZtQ",
+      "name": "FRC | Florida Club — Sync Gasto Ads (CAC/ROAS)",
+      "active": true,
+      "updatedAt": "2026-06-16T19:03:07.798Z",
+      "trigger": {
+        "type": "cron",
+        "expression": "0 10 * * *",
+        "displayName": "Diario 07h BRT"
+      },
+      "nodeCount": 2,
+      "nodes": [
+        { "id": "sch", "name": "Diario 07h BRT", "type": "scheduleTrigger" },
+        { "id": "spend", "name": "Gasto Meta+Google", "type": "code" }
+      ],
+      "writes": ["public.florida_club_spend"],
+      "lastExecutionsReturned": 0,
+      "hardcodedCredentialEvidence": true
+    }
+  ],
+  "inactiveDuplicates": [
+    {
+      "id": "JIAN739N8xt7lSgt",
+      "name": "FRC | Florida Club — Sync Funil + Watchdog",
+      "active": false,
+      "updatedAt": "2026-06-16T15:17:10.744Z"
+    }
+  ]
+}
