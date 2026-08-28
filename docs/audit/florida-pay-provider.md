@@ -4,7 +4,7 @@
 
 ## Conclusão executiva
 
-**Dunnas Tecnologia é o único fornecedor técnico com API operacional encontrada, mas a API comprovada cobre o Florida Club — não os serviços bancários do Florida Pay.**
+**A política oficial identifica a operação do produto como FPR Serviços Digitais Ltda e a hospedagem técnica aponta para Dunnas Tecnologia. A instituição financeira/BaaS responsável por PIX, cartão e cripto ainda não é identificada nas fontes disponíveis.**
 
 Evidências:
 
@@ -15,6 +15,8 @@ Evidências:
 5. Existem três espelhos correspondentes no Supabase.
 6. A ficha pública atual do Google Play identifica o aplicativo `com.fprapp`, marca “Florida Rental Car” e pessoa jurídica desenvolvedora `EDGE GLOBAL SERVICOS ESPECIALIZADOS EM ADMINISTRACAO DE EMPRESAS LTDA`.
 7. A ficha pública promete PIX, criptoativos, cartão pré-pago e cadastro com verificação de identidade, mas não identifica a instituição financeira/BaaS que executa essas operações.
+8. O link oficial de privacidade da loja aponta para o domínio `sistema.floridaclub.dunnastecnologia.com.br`, confirmando Dunnas como plataforma técnica do aplicativo.
+9. A política identifica a Florida Pay como operada por **FPR Serviços Digitais Ltda**, CNPJ `59.971.035/0001-10`, sem nomear o parceiro regulado que liquida PIX, cartão ou cripto.
 
 As referências históricas a PayPix, Bankei e C9 Tech não vieram acompanhadas de credencial, automação, tabela ou endpoint ativo na auditoria atual. O Vault também não possui credencial com esses nomes. Portanto, nenhuma delas é tratada como fonte oficial.
 
@@ -33,7 +35,10 @@ As referências históricas a PayPix, Bankei e C9 Tech não vieram acompanhadas 
 | Ação necessária | Fonte confirmada hoje | Cobertura |
 |---|---|---|
 | Localizar cliente | Dunnas `/clientes` | Parcialmente confirmada |
-| Verificar identidade/KYC | Não encontrada | Indisponível |
+| Responsável pela operação do produto | Política oficial — FPR Serviços Digitais Ltda | Confirmado documentalmente |
+| Plataforma técnica | Domínio oficial Dunnas + API existente | Confirmada |
+| Instituição financeira/BaaS | Não identificada | Indisponível |
+| Verificar identidade/KYC | API não encontrada | Indisponível |
 | Ver status da conta Florida Pay | Não encontrada | Indisponível |
 | Ver status do cartão | Não encontrada | Indisponível |
 | Ver status do PIX | Não encontrada | Indisponível |
@@ -54,4 +59,4 @@ O agente não poderá afirmar que uma conta foi aprovada nem consultar documento
 
 ## Próxima prova necessária
 
-Obter com o responsável do aplicativo o nome da instituição financeira/BaaS, a documentação oficial e uma credencial somente leitura para uma conta interna de teste. O painel Dunnas continua útil para Club, mas não prova KYC, conta, cartão ou PIX do Pay. Nenhuma criação de conta ou movimentação financeira faz parte desse teste.
+Obter com a FPR Serviços Digitais Ltda/Dunnas o nome da instituição financeira/BaaS, a documentação oficial e uma credencial somente leitura para uma conta interna de teste. A hospedagem Dunnas e a política comprovam a plataforma e a operadora do produto, mas não provam quem liquida KYC, conta, cartão, PIX ou cripto. Nenhuma criação de conta ou movimentação financeira faz parte desse teste.
