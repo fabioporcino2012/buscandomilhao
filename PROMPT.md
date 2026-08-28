@@ -183,10 +183,11 @@ Modelos existentes:
 
 Antes de ativar o 3309:
 
-1. Auditar a automação Z-API antiga que usa a mesma instância/número para finanças pessoais.
-2. Garantir que o webhook comercial e o webhook antigo não respondam à mesma mensagem.
+1. Usar somente Kommo e a API oficial do WhatsApp nesta operação; Z-API não participa da esteira.
+2. Comprovar que qualquer webhook antigo ou não comercial não consegue responder pelo mesmo número.
 3. Fazer um smoke test: uma leitura, uma mensagem de teste autorizada e uma leitura de confirmação.
-4. Confirmar registro da conversa e da mensagem no Kommo.
+4. Confirmar que o texto exato, o canal, o ID externo e os horários EDT/BRT foram registrados como nota no Kommo.
+5. Se a mensagem for enviada e a nota falhar, tentar novamente somente a nota; nunca reenviar a mensagem.
 
 ### Instagram
 
@@ -194,7 +195,8 @@ Antes de ativar o 3309:
 - Estado público auditado em 27/08/2026: 49 publicações e 292 seguidores.
 - Posicionamento atual: clube de benefícios, com link para Florida Black. Reposicionar para a esteira Florida Pay → Florida Club → Florida Black antes da ativação comercial.
 - Ativos atualmente visíveis ao acesso técnico principal: `@floridarentalcar`, `@floridaplus` e `@floridarentalcarlatino`.
-- `@floridacluboficial` ainda não aparece nos ativos acessíveis pela API. Vincular à página correta, ao portfólio Meta e ao usuário técnico canônico antes de uso autônomo.
+- Estado confirmado em 28/08/2026: o perfil foi vinculado à Página `130061446866540`, à BM01 Florida Club `1045934536526205`, à conta CA01 e ao usuário técnico `FClub Automation`.
+- Perfil, mídia, comentários e insights já passam no teste de leitura. Mensagens diretas ainda ficam bloqueadas até existir um Page Access Token ou token técnico dedicado com a permissão efetivamente comprovada.
 - Priorizar API oficial para mensagens recebidas, comentários e eventos elegíveis.
 - Chrome serve para pesquisa, auditoria e primeiro contato quando tecnicamente necessário e previamente habilitado.
 
@@ -518,7 +520,7 @@ Pausar automaticamente quando houver:
 5. Abrir e revisar os workflows existentes de captura e sincronismo.
 6. Identificar a API e o operador atual do Florida Pay.
 7. Conectar `@floridacluboficial` à página e ao portfólio Meta corretos, conceder acesso ao usuário técnico e fazer smoke test de leitura.
-8. Isolar a automação antiga Z-API do 3309.
+8. Remover a automação antiga do caminho de resposta do 3309 e manter somente Kommo + API oficial.
 9. Auditar site, links, textos e formulário.
 10. Produzir relatório “reusar, corrigir, desligar, criar”.
 
@@ -575,7 +577,7 @@ O sistema só está pronto quando provar:
 9. Contrato e pagamento só são confirmados pela fonte oficial.
 10. O cliente pode avançar para Florida Black.
 11. Pedido de parada bloqueia todos os canais.
-12. WhatsApp 3309 não conflita com a automação antiga.
+12. WhatsApp 3309 tem somente a API oficial como dona de resposta e cada mensagem aparece como nota no Kommo.
 13. Instagram e WhatsApp não respondem duplicado.
 14. Falha de API gera pausa e tarefa, não resposta inventada.
 15. O painel separa leads reais do histórico reaproveitado.

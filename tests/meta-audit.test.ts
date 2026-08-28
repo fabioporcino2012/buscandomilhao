@@ -43,11 +43,11 @@ describe("WhatsApp 3309 safety", () => {
     ]);
   });
 
-  it("blocks dispatch when Meta and Z-API can answer the same number", () => {
+  it("blocks dispatch when an old non-commercial webhook can answer the official number", () => {
     expect(
       determineChannelOwnership({
-        metaWebhookActive: true,
-        zapiWebhookActive: true,
+        officialApiWebhookActive: true,
+        legacyNonCommercialWebhookActive: true,
       }),
     ).toEqual({ ok: false, status: "blocked_conflicting_owners" });
   });

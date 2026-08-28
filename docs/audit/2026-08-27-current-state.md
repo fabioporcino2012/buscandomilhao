@@ -47,7 +47,8 @@ O cliente terá um único histórico. O sistema decidirá qual produto apresenta
 - Dois modelos de mensagem estão aprovados:
   1. `fc_copy_condicao_especial_uudodu` — BLOQUEAR. O texto afirma que 100% do valor retorna, o que conflita com a regra comercial confirmada.
   2. `fc_chamada_de_video_4hxtev` — pode servir como base, mas ainda precisa passar pela revisão final do novo sistema.
-- Existe uma automação Z-API antiga de finanças pessoais ligada ao mesmo número/instância. A função continua publicada, mas não registrou mensagens nos últimos 7 dias. Essa sobreposição precisa ser isolada antes de ativar o atendimento comercial, para impedir que uma conversa de cliente seja tratada como conversa pessoal.
+- A arquitetura aprovada para a operação não usa Z-API: WhatsApp oficial + Kommo são os únicos caminhos comerciais. Qualquer automação antiga não comercial precisa permanecer tecnicamente incapaz de responder.
+- A consulta ao WABA em 28/08/2026 retornou `subscribed_apps = []`. Portanto nenhum aplicativo está inscrito para receber os eventos do número 3309; o canal continua bloqueado para automação.
 
 ### 2.4 Instagram
 
@@ -55,8 +56,8 @@ O cliente terá um único histórico. O sistema decidirá qual produto apresenta
 - Leitura pública em 27/08/2026: 49 publicações e 292 seguidores.
 - Posicionamento atual: “Florida Club | Seu Clube de Benefícios”. A bio fala em experiências, descontos e vantagens e aponta para o Florida Black. Esse posicionamento é anterior à nova esteira Pay → Club → Black e precisa ser revisado antes do lançamento.
 - A Meta atualmente oferece acesso confirmado a `@floridarentalcar`, `@floridaplus` e `@floridarentalcarlatino` pelo usuário técnico principal.
-- O Instagram dedicado do Florida Club não apareceu entre os ativos acessíveis na auditoria da API. Ele existe publicamente, mas ainda precisa ser conectado à página, ao portfólio Meta e ao usuário técnico corretos antes de automatizar sua caixa de entrada.
-- A confirmação de segurança da conta da Crislany foi concluída em 27/08/2026. O portfólio empresarial abriu normalmente e confirmou que o `@floridacluboficial` ainda não está entre os ativos conectados. A janela oficial de login do Instagram ficou aberta para a entrada humana no perfil correto; nenhuma senha ou código foi registrado.
+- O Instagram dedicado foi conectado à BM01, Página, conta de anúncios e usuário técnico. Leitura de perfil, mídia, comentários e insights foi comprovada; mensagens diretas continuam bloqueadas por falta da credencial/capacidade correta do aplicativo.
+- O login humano e a vinculação empresarial foram concluídos sem registrar senha ou código.
 - O Chrome será usado com perfil dedicado e modo de teste. Não será usado para esconder automação, contornar bloqueios ou interferir no Chrome pessoal.
 
 Atualização 27/08/2026 17:06 EDT: o Chrome está autenticado no `@floridacluboficial`. Entretanto, uma nova leitura Graph v25 das páginas acessíveis pela credencial principal e pela credencial da Crislany ainda retornou apenas `@floridarentalcar`, `@floridaplus` e `@floridarentalcarlatino`. Portanto, o login foi confirmado, mas a vinculação empresarial/API ainda não foi comprovada.
@@ -78,7 +79,7 @@ Atualização 27/08/2026 17:06 EDT: o Chrome está autenticado no `@floridaclubo
 - O painel do funil agrega milhares de registros históricos porque o pipeline foi reaproveitado. Esses contatos não podem ser chamados de leads reais do Florida Club sem uma marca de origem confiável.
 - O sincronismo de gastos está atualizado, mas sem investimento registrado.
 - O sincronismo do funil possui execuções recentes incompletas ou com erro. Antes de ativar a esteira autônoma será necessário reparar o fluxo já existente, sem criar outro robô duplicado.
-- A API pública do n8n retornou 401 na auditoria atual. Os webhooks podem continuar funcionando, mas o acesso administrativo da API precisa ser renovado para inspecionar e corrigir os workflows.
+- A API administrativa do n8n voltou a responder. Foram encontrados 82 workflows, 61 ativos, incluindo três fluxos ativos do Florida Club e uma duplicata antiga inativa. A execução mais recente do sincronismo do funil falhou com 503, enquanto a anterior terminou com sucesso.
 
 ## 4. Inconsistências que precisam ser corrigidas
 
@@ -129,11 +130,22 @@ Após um único aceite de ativação do piloto, o sistema poderá responder, qua
 
 ## 6. Pendências principais para a implementação
 
-1. Conectar o Instagram `@floridacluboficial` à página, ao portfólio Meta e ao usuário técnico corretos.
+1. Liberar mensagens do `@floridacluboficial` para o aplicativo técnico correto, preservando a vinculação empresarial já concluída.
 2. Identificar o operador e a documentação/API canônica do Florida Pay.
-3. Isolar o número 3309 da automação antiga de finanças pessoais.
-4. Renovar o acesso administrativo da API do n8n.
+3. Inscrever o aplicativo correto no WABA 3309 e comprovar que somente a API oficial responde.
+4. Retirar credenciais embutidas dos três workflows ativos do Florida Club e tratar o erro 503 sem duplicar robôs.
 5. Definir o catálogo ativo e o preço oficial do Florida Black.
 6. Definir qual agenda e qual pessoa recebem reuniões qualificadas das cotas.
 
 Essas pendências não impedem a revisão do prompt. Elas viram tarefas obrigatórias da primeira fase de execução.
+
+## 7. Atualização operacional — 28/08/2026 (EDT)
+
+1. O `@floridacluboficial` foi vinculado à Página `130061446866540`, à BM01 Florida Club `1045934536526205`, à conta CA01 e ao usuário técnico `FClub Automation`.
+2. A leitura de perfil, mídia, comentários e insights foi confirmada. Mensagens diretas ainda não estão liberadas: a credencial atual não deriva o Page Access Token necessário e a API retorna bloqueio de capacidade/permissão.
+3. A decisão final de canal é: **sem Z-API**. O WhatsApp 3309 opera por Kommo + API oficial; qualquer automação antiga deve ficar tecnicamente incapaz de responder.
+4. Toda mensagem real da IA deve virar nota no lead do Kommo com texto exato, canal, ID externo e horários de Orlando e São Paulo.
+5. Se o canal confirmar o envio e o Kommo falhar, a recuperação repete somente a gravação da nota. A mensagem não é enviada novamente.
+6. A base central foi criada no Supabase principal com entrada idempotente, fila de saída protegida, descadastro global, saúde de integrações e segredos gerados dentro do Vault.
+7. O freio geral de saídas nasceu pausado e foi confirmado ao vivo. O dashboard recebe apenas um resumo protegido; texto, telefone, destino e payload não são expostos.
+8. As funções públicas de entrada e despacho foram publicadas com autenticação própria. Um evento técnico sem cliente foi aceito uma vez, a repetição foi reconhecida e o despacho sem credencial foi bloqueado com 401.

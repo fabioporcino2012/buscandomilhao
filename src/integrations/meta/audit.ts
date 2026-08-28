@@ -41,10 +41,13 @@ export function auditTemplates(
 }
 
 export function determineChannelOwnership(input: {
-  metaWebhookActive: boolean;
-  zapiWebhookActive: boolean;
+  officialApiWebhookActive: boolean;
+  legacyNonCommercialWebhookActive: boolean;
 }) {
-  if (input.metaWebhookActive && input.zapiWebhookActive) {
+  if (
+    input.officialApiWebhookActive &&
+    input.legacyNonCommercialWebhookActive
+  ) {
     return { ok: false, status: "blocked_conflicting_owners" } as const;
   }
 

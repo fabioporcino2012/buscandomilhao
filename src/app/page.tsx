@@ -76,8 +76,8 @@ export default function HomePage() {
               <h3>Próxima decisão</h3>
             </div>
             <strong>WhatsApp 3309</strong>
-            <p>Confirmar um único dono do canal antes do piloto.</p>
-            <small>Meta saudável; Z-API ainda precisa de isolamento.</small>
+            <p>API oficial será o único dono de resposta.</p>
+            <small>Qualquer automação antiga mantém o piloto bloqueado.</small>
           </article>
 
           <article className="panel">

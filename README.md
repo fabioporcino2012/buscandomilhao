@@ -37,7 +37,7 @@ Não é permitido comunicar esse benefício como rendimento, retorno garantido o
 ## Próxima validação
 
 1. Conectar `@floridacluboficial` ao portfólio Meta correto.
-2. Isolar o WhatsApp 3309 da automação pessoal antiga.
+2. Comprovar que o WhatsApp 3309 responde somente pela API oficial e registra cada mensagem como nota no Kommo.
 3. Confirmar o sistema oficial do Florida Pay.
 4. Confirmar o catálogo ativo do Florida Black.
 5. Executar o teste completo em modo de simulação.

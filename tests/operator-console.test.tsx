@@ -35,7 +35,7 @@ describe("operator console", () => {
   it("shows leads, health and settings in PT-BR", () => {
     expect(renderToStaticMarkup(<LeadsPage />)).toContain("Próxima ação");
     expect(renderToStaticMarkup(<HealthPage />)).toContain(
-      "Conflito de dono do canal",
+      "API oficial definida; legado precisa ficar sem resposta",
     );
     expect(renderToStaticMarkup(<SettingsPage />)).toContain(
       "Limites do piloto",

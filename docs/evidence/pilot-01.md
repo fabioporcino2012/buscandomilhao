@@ -18,10 +18,22 @@
 ## Smoke tests somente leitura
 
 - WABA +1 407-462-3309: conectado, verificado e qualidade GREEN no momento da auditoria.
-- Instagram: login no Chrome confirmado para `@floridacluboficial`; ativo comercial Meta ainda pendente.
+- Instagram: ativo comercial conectado à BM01, Página, CA01 e usuário técnico; leitura de perfil/mídia/comentários/insights confirmada. Mensagens diretas continuam bloqueadas até a credencial técnica correta ser comprovada.
 - Florida Pay: Dunnas confirmado como fornecedor parcial; status KYC/conta/PIX não comprovados pela API atual.
 - Florida Black: `vendas/suspensa = true`; nenhum checkout ativo confirmado.
 - Kommo: fluxos Florida Club usam `kommo-proxy-v2` com `/api/v4`.
+
+## Base central comprovada em produção — 28/08/2026
+
+- Supabase principal: quatro tabelas operacionais, Vault, freio geral e resumo protegido do dashboard criados.
+- Funções `fl-ecosystem-webhook` e `fl-ecosystem-dispatch`: ativas com autenticação própria.
+- Evento técnico `codex-smoke-1787926041`: recebido uma única vez, marcado como concluído e sem cliente associado.
+- Repetição do evento: reconhecida sem criar segunda ocorrência.
+- Despacho sem credencial: bloqueado com HTTP 401.
+- Freio geral: `outbound_paused = true`.
+- Fila real de saída: zero mensagens enviadas.
+- Leitura do resumo por conta autorizada: permitida.
+- Leitura simulada por identidade sem permissão: bloqueada.
 
 ## A preencher após aprovação específica
 
@@ -35,3 +47,4 @@
 - Resultado:
 - Confirmação de registro único:
 - Estado final da pausa:
+- Nota da mensagem no Kommo:

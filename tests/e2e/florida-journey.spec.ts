@@ -85,8 +85,8 @@ describe("Florida ecosystem end-to-end dry-run", () => {
 
     expect(
       determineChannelOwnership({
-        metaWebhookActive: true,
-        zapiWebhookActive: true,
+        officialApiWebhookActive: true,
+        legacyNonCommercialWebhookActive: true,
       }),
     ).toEqual({ ok: false, status: "blocked_conflicting_owners" });
 

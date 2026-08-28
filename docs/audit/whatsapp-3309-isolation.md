@@ -29,6 +29,13 @@ Leitura realizada pela Graph API v25 com a credencial técnica principal. Nenhum
 
 Esses dados não provam que o webhook antigo ainda recebe mensagens hoje, mas provam que o caminho continua publicado. Até confirmar o proprietário atual do webhook e a coexistência Z-API/Meta, o estado operacional deve permanecer `blocked_conflicting_owners`.
 
+## Decisão final de arquitetura — 28/08/2026
+
+- Z-API não faz parte da operação Florida Pay → Florida Club → Florida Black.
+- O único caminho autorizado é Kommo + WhatsApp Cloud API oficial.
+- A existência de qualquer webhook legado capaz de responder pelo 3309 mantém o canal bloqueado.
+- Cada mensagem enviada deve ser registrada como nota no lead do Kommo. Uma falha nessa nota gera tentativa somente do registro, sem novo envio ao cliente.
+
 ## Regra de liberação
 
 O envio externo só poderá sair do modo de simulação quando:

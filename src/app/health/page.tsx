@@ -1,8 +1,8 @@
 import { OperatorNav } from "../../components/OperatorNav";
 
 const healthItems = [
-  ["Instagram @floridacluboficial", "Acesso no Chrome confirmado", "warning"],
-  ["WhatsApp +1 407-462-3309", "Conflito de dono do canal", "danger"],
+  ["Instagram @floridacluboficial", "Ativo conectado; mensagens via API ainda bloqueadas", "warning"],
+  ["WhatsApp +1 407-462-3309", "API oficial definida; legado precisa ficar sem resposta", "warning"],
   ["Kommo", "Acesso somente pelo proxy seguro", "ok"],
   ["Florida Pay", "Fornecedor Dunnas parcialmente comprovado", "warning"],
 ] as const;
